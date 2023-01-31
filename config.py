@@ -11,7 +11,7 @@ db = {
 }
 
 # pybo.db 파일을 생성하고, 데이터베이스 연결 정보를 저장
-SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8".format(
+SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8".format(
     os.path.join(BASE_DIR, 'pybo.db'))
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
