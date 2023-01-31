@@ -1,0 +1,38 @@
+
+  <h1>마이맵 리스트 </h1>
+  <p><a href="{{ url_for('main.main_page') }}"> 메인으로 이동하기</a></p>
+  
+  {%  if center_list  %}
+    <h2>교육기관{{ center_cnt }}건</h2>
+    {% for center in center_list %}
+    <div>  
+      <h4>{{ center.center_nm }}</h4>
+      <p> {{ center.address }} 
+          {% if center.detail_address %} {{ center.detail_address }} {% endif %}
+      </p>
+      <p>대상: {{ center.target }} | 과목 : {{ center.subject }} </p>
+    </div>
+    {% endfor %}
+  {% else %}
+    <h4>등록하신 정보가 없습니다.</h4>
+  {% endif %}
+
+  {%  if property_list  %}
+    <h2>부동산{{ property_cnt }}건</h2>
+  {% for property in property_list %}
+    <div>  
+      <h4>{{ property.property_nm }}</h4>
+      <p> {{ property.address }} 
+          {% if property.detail_address %} {{ property.detail_address }} {% endif %}
+      </p>
+      <p>평수: {{ property.area_feet }} | 층수 : {% if property.undrgrnd_yn == 'Y' %}지하 {% endif %} {{ property.floor }}층</p>
+      <p>매물 가격: <span>  {{ price_list[loop.index-1] }} </span></p>
+    </div>
+  {% endfor  %}
+  {% else %}
+    <h4>등록하신 정보가 없습니다.</h4>
+  {% endif %}
+  
+<script type="text/javascript">
+
+</script>

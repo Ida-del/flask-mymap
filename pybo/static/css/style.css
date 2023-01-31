@@ -1,0 +1,833 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:300,400,700');
+
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.full-screen {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-xl {
+    font-size: 4rem;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+}
+
+.toggler {
+    z-index: 3;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background-color: #1E5DF8;
+    color: white;
+
+    border-radius: 50%;
+}
+
+.navbar-toggler {
+    width: 3rem;
+    height: 3rem;
+    color: white;
+}
+
+.memberInfo {
+    float: right;
+    position: relative;
+    top: 3rem;
+    right: 2rem;
+}
+
+.navbar-side {
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100vh;
+    z-index: 2;
+}
+
+.navbar-list {
+    font-family: 'Gothic A1';
+
+    height: 100vh;
+}
+
+.navbar-items {
+    padding-top: 8rem;
+    padding-left: 2rem;
+
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-items ul {
+    list-style: none;
+}
+
+.navbar-items li {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.navbar-items li:hover {
+    text-decoration: underline;
+}
+
+
+.scrollAreaRight {
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 100vh;
+
+    position: absolute;
+    right: 2rem;
+    background-color: aliceblue;
+}
+
+.scrollAreaLeft {
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 100vh;
+
+    position: absolute;
+    left: 2rem;
+    background-color: aliceblue;
+}
+
+.console {
+    min-width: 300px;
+    max-width: 400px;
+    height: fit-content;
+
+    border-radius: 2rem;
+
+    z-index: 2;
+
+    margin-top: 2rem;
+    background-color: white;
+}
+
+
+.card-header {
+    font-family: 'Gothic A1';
+    font-weight: bold;
+    font-size: 2.2rem;
+    background-color: #1E5DF8 !important;
+    color: white;
+}
+
+.data-header {
+    font-family: 'Gothic A1';
+    font-weight: bold;
+    line-height: 28px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#footer {
+    position: absolute;
+    bottom: 2rem;
+}
+
+/* Place */
+#add-place {
+    display: none;
+}
+
+.place-card {
+    z-index: 2;
+    min-width: 300px;
+    max-width: 400px;
+    height: 120px;
+    background-color: white;
+    display: block;
+    margin-top: 1rem;
+
+    border-left: 0.5rem solid #1E5DF8 !important;
+}
+
+.add-this-place-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    background-color: #1E5DF8;
+    float: right;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.markerbg {
+    float: left;
+    position: absolute;
+    width: 36px;
+    height: 37px;
+    margin: -10px 0 0 -10px;
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+
+.marker_1 {
+    background-position: 0 -10px;
+}
+
+.marker_2 {
+    background-position: 0 -56px;
+}
+
+.marker_3 {
+    background-position: 0 -102px
+}
+
+.marker_4 {
+    background-position: 0 -148px;
+}
+
+.marker_5 {
+    background-position: 0 -194px;
+}
+
+.marker_6 {
+    background-position: 0 -240px;
+}
+
+.marker_7 {
+    background-position: 0 -286px;
+}
+
+.marker_8 {
+    background-position: 0 -332px;
+}
+
+.marker_9 {
+    background-position: 0 -378px;
+}
+
+.marker_10 {
+    background-position: 0 -423px;
+}
+
+.marker_11 {
+    background-position: 0 -470px;
+}
+
+.marker_12 {
+    background-position: 0 -516px;
+}
+
+.marker_13 {
+    background-position: 0 -562px;
+}
+
+.marker_14 {
+    background-position: 0 -608px;
+}
+
+.marker_15 {
+    background-position: 0 -654px;
+}
+
+
+/*custom overlay*/
+.wrap_bk {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 288px;
+    height: 132px;
+    margin-left: -144px;
+    text-align: left;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    line-height: 1.5;
+}
+
+.wrap {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 288px;
+    height: auto;
+    margin-left: -144px;
+    text-align: center;
+    overflow: overflow-y;
+    font-size: 21px;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    line-height: 1.7;
+}
+
+.wrap * {
+    padding: 0;
+    margin: 0;
+}
+
+/* 인포윈도우 커스텀 CSS */
+.info-title {
+    display: block;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    height: 56px;
+    width: 100%;
+    line-height: 22px;
+    border-radius: 4px;
+    padding: 3px 10px;
+    border: 1px inset #1E5DF8;
+    font-size: 1.3rem;
+}
+
+.info-content {
+    display: block;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    height: 26px;
+    line-height: 22px;
+    border-radius: 4px;
+    padding: 3px 10px;
+
+}
+
+.wrap .info {
+    /* width: fit-content; */
+    height: auto;
+    border-radius: 5px;
+    overflow: auto;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.wrap .info:nth-child(1) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+    margin: 5px 30px;
+    background: #fff;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.info .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #888;
+    width: 17px;
+    height: 17px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+    cursor: pointer;
+}
+
+.info .body {
+    position: relative;
+    overflow: auto;
+}
+
+.info .desc {
+    position: relative;
+    margin: 13px 0 0 90px;
+    height: 75px;
+}
+
+.desc .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.desc .jibun {
+    font-size: 11px;
+    color: #888;
+    margin-top: -2px;
+}
+
+.info .img {
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 73px;
+    height: 71px;
+    border: 1px solid #ddd;
+    color: #888;
+    overflow: hidden;
+}
+
+.info:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: 0;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+    color: #5085BB;
+}
+
+.label {
+    margin-bottom: 96px;
+}
+
+.label * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.label .left {
+    background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;
+    display: inline-block;
+    height: 24px;
+    overflow: hidden;
+    vertical-align: top;
+    width: 7px;
+}
+
+.label .center {
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;
+    display: inline-block;
+    height: 24px;
+    font-size: 24px;
+    color: #262525;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.label .right {
+    background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0 no-repeat;
+    display: inline-block;
+    height: 24px;
+    overflow: hidden;
+    width: 6px;
+}
+
+
+/* Star */
+#rate-place {
+    display: none;
+}
+
+.star-rate {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    width: 12rem;
+}
+
+.star-item {
+    flex: 1;
+    text-align: center;
+    border: 1px solid lightgray;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+input[type=radio] {
+    display: none;
+    margin: 10px;
+}
+
+#star-popup {}
+
+
+/* Group */
+
+#group {
+    display: none;
+}
+
+.group-item {
+    width: 150px;
+    height: 150px;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: tomato;
+    color: white;
+    line-height: 150px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#add-group {
+    display: none;
+}
+
+#group-info {
+    display: none;
+}
+
+#group-info .member-item {
+    margin: 5px;
+    height: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    background-color: white;
+    color: #262525;
+    border: 1px solid tomato;
+}
+
+#group-info .member-item:hover {
+    background-color: tomato;
+    color: white;
+}
+
+#join-group {
+    display: none;
+}
+
+#group-timeline {
+    display: none;
+}
+
+.hover-the-rainbow {
+    cursor: pointer;
+}
+
+.hover-the-rainbow:hover {
+    animation: color-change 1s infinite;
+}
+
+@keyframes color-change {
+    0% {
+        color: #fd8d70;
+    }
+
+    10% {
+        color: #ffbc47;
+    }
+
+    20% {
+        color: #b8ff47;
+    }
+
+    30% {
+        color: #47ffa9;
+    }
+
+    40% {
+        color: #47d4ff;
+    }
+
+    50% {
+        color: #4775ff;
+    }
+
+    60% {
+        color: #6347ff;
+    }
+
+    70% {
+        color: #a947ff;
+    }
+
+    80% {
+        color: #ff47f6;
+    }
+
+    90% {
+        color: #ff477b;
+    }
+
+    100% {
+        color: #ff4747;
+    }
+}
+
+
+
+/* timeline */
+#place-info {
+    display: none;
+}
+
+.timeline-block {
+    width: 100%;
+    min-height: 100px;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 1rem;
+}
+
+.tl-image-block {
+    width: 50%;
+    min-height: 100px;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 1rem;
+
+}
+
+.tl-blog-block {
+    padding: 1rem;
+    font-family: "나눔스퀘어라운드 Regular";
+}
+
+.tl-blog-block>span {
+    height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#load-more-place-timeline {
+    margin-left: auto;
+    margin-right: auto;
+    height: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    background-color: white;
+    color: tomato;
+    border: 1px solid tomato;
+    z-index: 2;
+}
+
+#load-more-place-timeline:hover {
+    background-color: tomato;
+    color: white;
+}
+
+/*popup*/
+.popup_layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+/*팝업 박스*/
+.popup_box {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    overflow: auto;
+    height: 700px;
+    width: 650px;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+}
+
+/*컨텐츠 영역*/
+.popup_box .popup_cont {
+    padding: 10px 20px;
+    line-height: 1.4rem;
+}
+
+.popup_box .popup_cont h2 {
+    padding: 15px 0;
+    color: #333;
+    margin: 0;
+}
+
+.popup_box .popup_cont p {
+    border-top: 1px solid #666;
+    padding-top: 30px;
+}
+
+/*버튼영역*/
+.popup_box .popup_btn {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 70px;
+    background: #ECECEC;
+    word-break: break-word;
+}
+
+.popup_box .popup_btn button {
+    position: relative;
+    display: table-cell;
+    height: 70px;
+    font-size: 17px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    background: #ECECEC;
+}
+
+.popup_box .popup_btn button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: 29px;
+    width: 1px;
+    height: 21px;
+    background: #fff;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.popup_box .popup_btn button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: 29px;
+    width: 1px;
+    height: 21px;
+    background: #fff;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.popup_box .popup_btn a.close_day {
+    background: #5d5d5d;
+}
+
+.popup_box .popup_btn a.close_day:before,
+.popup_box .popup_btn a.close_day:after {
+    display: none;
+}
+
+/*오버레이 뒷배경*/
+.popup_overlay {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+    ;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* 탭 이동 */
+.tab {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.tab li {
+    float: left;
+}
+
+.tab li a {
+    display: inline;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.tabcont {
+    display: none;
+    background-color: white;
+    padding: 6px 12px;
+    color: black;
+}
+
+/* 상세정보 */
+.detail-info {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* 탭 이동 - 활성화 */
+ul.tab li.active {
+    background-color: blue;
+}
+
+.tabcont.active {
+    display: block;
+}
+
+/* 폼 입력 양식 */
+.box input {
+    padding: 4px;
+}
+
+.short {
+    width: 28%;
+}
+
+.long {
+    width: 68%;
+}
+
+.short input {
+    width: 100%;
+}
+
+.long input {
+    width: 100%;
+}
+
+
+.multi-box {
+    display: flex;
+    justify-content: space-between;
+}

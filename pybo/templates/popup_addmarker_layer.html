@@ -1,0 +1,169 @@
+
+<div class="popup_layer" id="popup_layer">
+    <div class="popup_box">
+        <div class="form-group ">
+            <button type ="button" class="btn btn-light" onclick="closePopup()"> 닫기 </button>
+            <h3 class="form-control">마커 등록하기</h3> 
+        </div>
+
+        <ul class="form-group tab multi">
+			<li class="active form-control" data-tab="popup_center"><a href="#">교육기관</a></li>
+			<li class="form-control" data-tab="popup_property"><a href="#">부동산</a></li>
+		</ul>
+
+        <div id="popup_center" class="popup_cont tabcont active" >
+            필수항목
+            <form id="frm_center" name="frm_center" method="POST" onSubmit="return false;">
+                <input type="hidden" name="centerSeq" id="centerSeq" value="" />
+                <div class="form-group">
+                    {{ form.centerNm(placeholder="교육기관명을 입력하세요.", class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.centerDesc(placeholder="내용을 입력하세요.", class="form-control", rows="3") }}
+                </div>
+                <div class="form-group">
+                    {{ form.brandNm(class="form-control") }}
+                    {{ form.branchNm(class="form-control") }}
+                </div>
+                <div class="form-group multi-box">
+                    {{ form.address1(placeholder="도로명주소", class="form-control") }}
+                    <button type="button" class="btn btn-primary" onclick="srchByPostcode('frm_center')">검색</button>
+                    {{ form.centerLat(type="hidden", id="centerLat") }}
+                    {{ form.centerLng(type="hidden", id="centerLng") }}
+                </div>
+                <div class="form-group">
+                    {{ form.detailAddress1(placeholder="상세주소", class="form-control") }}
+                </div>
+                <div class="form-group">
+                    <span>대상<span>
+                    <div class="form-class">
+                        <input id="target-0" name="target" type="checkbox" value="영유아"> <label for="target-0">영유아</label>
+                        <input id="target-1" name="target" type="checkbox" value="초등학생"> <label for="target-1">초등학생</label>
+                        <input id="target-2" name="target" type="checkbox" value="중학생"> <label for="target-2">중학생</label>
+                        <input id="target-3" name="target" type="checkbox" value="고등학생"> <label for="target-3">고등학생</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span>과목</span>
+                    <div class="form-class">
+                        <input id="subject-0" name="subject" type="checkbox" value="국어" /> <label for="subject-0">국어</label>
+
+                        <input id="subject-1" name="subject" type="checkbox" value="영어"> <label for="subject-1">영어</label>
+
+                        <input id="subject-2" name="subject" type="checkbox" value="수학"> <label for="subject-2">수학</label>
+
+                        <input id="subject-3" name="subject" type="checkbox" value="사회"> <label for="subject-3">사회</label>
+
+                        <input id="subject-4" name="subject" type="checkbox" value="과학"> <label for="subject-4">과학</label>
+                    </div>
+                    <div class="form-class">
+                        <input id="subject-5" name="subject" type="checkbox" value="제2외국어"> <label for="subject-5">제2외국어</label>
+
+                        <input id="subject-6" name="subject" type="checkbox" value="논술"> <label for="subject-6">논술</label>
+
+                        <input id="subject-7" name="subject" type="checkbox" value="예체능"> <label for="subject-7">예체능</label>
+
+                        <input id="subject-8" name="subject" type="checkbox" value="코딩"> <label for="subject-8">코딩</label>
+
+                        <input id="subject-9" name="subject" type="checkbox" value="교구학습"> <label for="subject-9">교구학습</label>
+
+                        <input id="subject-10" name="subject" type="checkbox" value="창의력"> <label for="subject-10">창의력</label>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="multi-box" >
+                        <h5>선택항목</h5>
+                        <button type="button" class="btn btn-light" onclick="addOptsBtn('frm_center')"> + 선택항목 추가</button>
+                    </div>
+                    <div id="optsWrap1">
+
+                    </div>
+                </div>
+                <div class="form-group" style="float: bottom; margin-top: 200px;">
+                    <button type="button"onclick="checkFrmCenter(this)" class="btn btn-primary">등록</button>
+                    <button type="button" onclick="closePopup()" class="btn btn-light" >취소</a>
+                </div>
+            </form> 
+        </div>
+        
+        <div id="popup_property" class="popup_cont tabcont">
+            필수항목
+            <form id="frm_property" name="frm_property" method="POST" onSubmit="return false;">
+                <input type="hidden" name="propertySeq" id="propertySeq" value="" />
+
+                <div class="form-group">
+                    {{ form2.propertyNm(placeholder="건물명을 입력하세요.", class="form-control") }}
+                </div>
+
+                <div class="form-group">
+                    
+                    {{ form2.propertyDesc(placeholder="내용을 입력하세요.", class="form-control", rows="3") }}
+                </div>
+
+                <div class="form-group multi-box">
+                    {{ form2.propertyLng(type="hidden", id="propertyLng") }}
+                    {{ form2.propertyLat(type="hidden", id="propertyLat") }}
+                    {{ form2.address2(id="address2", placeholder="도로명주소", class="form-control") }}
+                    <button type="button" class="btn btn-primary" onclick="srchByPostcode('frm_property')">검색</button>
+                </div>
+
+                <div class="form-group">
+                    {{ form2.detailAddress2(id="detailAddress2", placeholder="상세주소", class="form-control") }}
+                </div>
+
+                <div class="form-group">
+                    <h6>매물 상세정보</h6>
+                    <div style="flex: auto;">
+                        <div class="form-row">
+                            {{ form2.areaFeet(id="areaFeet", max='999', placeholder="평수", class="form-control w-25") }} <label for="areaFeet"> 평</label>
+                        </div>
+                        <div class="form-row">
+                            {{ form2.floor(id="floor", max='999', placeholder="층수", class="form-control w-25") }} <label for="floor"> 층 </label>
+                            <div class="form-check">
+                                {{ form2.undrgrndYn(id="undrgrndYn", class="form-check-input") }} <label for="undrgrndYn"> 지하</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h6>매물 가격</h6>
+                    <div class="form-row">
+                        {{ form2.price(id="price", max='999999999999', placeholder="가격", class="form-control w-50") }} <label for="price"> 원</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h6>거래 현황</h6>
+                    <div class="form-check-inline">
+
+                        <input id="tradeState-1" name="tradingState" class="chb form-check-input" type="checkbox" value="A">  <label class="form-check-label" for="tradeState-1">임대 가능</label>
+
+                        <input id="tradeState-2" name="tradingState" class="chb form-check-input" type="checkbox" value="P"> <label class="form-check-label" for="tradeState-2">승인 대기</label>
+
+                        <input id="tradeState-3" name="tradingState" class="chb form-check-input" type="checkbox" value="R"> <label class="form-check-label" for="tradeState-3">거래 중</label>
+
+                        <input id="tradeState-4" name="tradingState" class="chb form-check-input" type="checkbox" value="T"> <label class="form-check-label" for="tradeState-4">거래 완료</label>
+                    </div>
+                    
+                </div>
+
+            
+                <hr />
+                <div class="form-group">
+                    <div class="multi-box" >
+                        선택항목
+                        <button type="button" class="btn btn-light" onclick="addOptsBtn('frm_property')"> + 선택항목 추가</button>
+                    </div>
+                    <div id="optsWrap2">
+
+                    </div>
+                </div>
+                <div class="form-group" style="float: bottom; margin-top: 200px;">
+                    <button type="button" onclick="checkFrmProperty(this)" class="btn btn-primary">등록</button>
+                    <button type="button" onclick="closePopup()" class="btn btn-light" >취소</a>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
