@@ -1090,7 +1090,7 @@ function propertyInfowindowWithTitle(marker, title, info_01) {
 
     let infoTitle = document.querySelectorAll('.info-title');
     infoTitle.forEach(function (e) {
-        var w = e.offsetWidth + 1;
+        var w = e.offsetWidth + 2;
         var ml = w / 2;
         e.parentElement.style.top = "0px";
         e.parentElement.style.left = "50%";

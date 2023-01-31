@@ -328,7 +328,7 @@ a:hover {
 }
 
 .wrap .info {
-    /* width: fit-content; */
+    width: fit-content;
     height: auto;
     border-radius: 5px;
     overflow: auto;
@@ -365,7 +365,7 @@ a:hover {
 
 .info .body {
     position: relative;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .info .desc {
